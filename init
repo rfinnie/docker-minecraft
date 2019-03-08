@@ -1,0 +1,18 @@
+#!/bin/sh
+
+set -e
+
+cd /srv/minecraft
+if [ -x /srv/minecraft/run_minecraft ]; then
+    exec setuidgid minecraft /srv/minecraft/run_minecraft
+elif [ -e /srv/minecraft/minecraft_server.jar ]; then
+    exec setuidgid minecraft java -Xmx1024M -Xms1024M -jar /srv/minecraft/minecraft_server.jar nogui
+else
+    echo "The minecraft user is:"
+    echo "    $(id minecraft)"
+    echo
+    echo "Please bind mount to /srv/minecraft.  Then:"
+    echo "  - Have an executable named run_minecraft in /srv/minecraft/, or"
+    echo "  - Have minecraft_server.jar in /srv/minecraft/"
+    exit 1
+fi
