@@ -4,9 +4,9 @@ set -e
 
 cd /srv/minecraft
 if [ -x /srv/minecraft/run_minecraft ]; then
-    exec setuidgid minecraft /srv/minecraft/run_minecraft
+    exec /srv/minecraft/run_minecraft
 elif [ -e /srv/minecraft/minecraft_server.jar ]; then
-    exec setuidgid minecraft java -Xmx1024M -Xms1024M -jar /srv/minecraft/minecraft_server.jar nogui
+    exec java -Xmx1024M -Xms1024M -jar /srv/minecraft/minecraft_server.jar nogui
 else
     echo "The minecraft user is:"
     echo "    $(id minecraft)"

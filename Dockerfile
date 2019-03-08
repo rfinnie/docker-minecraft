@@ -6,4 +6,5 @@ RUN /tmp/container-build && rm -f /tmp/container-build
 
 EXPOSE 25565/tcp
 
+USER minecraft
 CMD ["/init"]
