@@ -7,6 +7,4 @@ export DEBIAN_FRONTEND=noninteractive
 apt-get update -y
 apt-get install -y --no-install-recommends default-jre-headless daemontools
 apt-get clean
-adduser --system --home /srv/minecraft --no-create-home --quiet minecraft
-mkdir -p /srv/minecraft
-chown minecraft:nogroup /srv/minecraft
+adduser --system --home /srv/minecraft --group --quiet minecraft
